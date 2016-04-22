@@ -49,15 +49,15 @@ void setup() {
 
 void draw() {
   background(0);
-  
-  if (index == NUM_PHOTOS-1) {
-     load = false;
-     movie = true;
+
+  if (index == NUM_PHOTOS - 1) {
+    load = false;
+    movie = true;
   }
 
   if (load) {
     grain.set("dimensions", float(photos[index].width), float(photos[index].height));
-
+ 
     if (photos[index].width > photos[index].height) {
       aspect = float(photos[index].height)/photos[index].width;
       image(photos[index], width * 0.5, height * 0.5, height * overall, height * aspect * overall);
@@ -76,8 +76,7 @@ void draw() {
     filter(bleach);
     filter(grain);
     filter(technicolor);
-  }
-  else if (movie) {
+  } else if (movie) {
     home.play();
     aspect = 9.0/16.0;
     image(home, width * 0.5, height * 0.5, height * overall, height * aspect * overall);
@@ -88,8 +87,8 @@ void draw() {
     blurryRectangle(height * overall, height * aspect * overall);
   }
   if (off) {
-     fill(0, 0, 0);
-     rect(width * 0.5, height * 0.5, width, height);
+    fill(0, 0, 0);
+    rect(width * 0.5, height * 0.5, width, height);
   }
 }
 
@@ -122,8 +121,8 @@ void oscEvent(OscMessage msg) {
     }
   }
   if (msg.checkAddrPattern("/off") == true) {
-     load = false;
-     movie = false;
-     off = true;
+    load = false;
+    movie = false;
+    off = true;
   }
 }
